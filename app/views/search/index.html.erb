@@ -2,8 +2,8 @@
 
 <h2><%= @stores.store_total %> Total Stores</h2>
 
-<%= @stores.get_stores.each do |store| %>
-  <p class="long-name">Name: <%= store.long_name %></p>
+<% @stores.get_stores.each do |store| %>
+  <h3 class="long-name">Name: <%= store.long_name %></h3>
   <p class="city">City: <%= store.city %></p>
   <p class="distance">Distance: <%= store.distance %></p>
   <p class="phone">Phone: <%= store.phone %></p>
