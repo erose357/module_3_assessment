@@ -18,7 +18,7 @@ RSpec.describe "Items API" do
     expect(json[0][:created_at]).to be_nil
   end
 
-  it "sends one items" do
+  it "sends one item" do
     item = create(:item)
 
     get "/api/v1/items/#{item.id}"
@@ -33,5 +33,26 @@ RSpec.describe "Items API" do
     expect(json[:updated_at]).to be_nil
     expect(json[:created_at]).to be_nil
   end
+  
+  it "can delete one item" do
+    item = create(:item)
+
+    delete "/api/v1/items/#{item.id}"
+
+    expect(response.status).to eq(204) 
+    expect(Item.find(item.id)).to raise_exception(ActiveRecord::RecordNotFound)
+  end
+
+  it "can create an item" do
+    item = create(:item)
+
+    put "/api/v1/items/#{item.id}"
+
+    expect(response.status).to eq(204) 
+    expect(Item.find(item.id)).to raise_exception(ActiveRecord::RecordNotFound)
+  end
 end
+#When I send a POST request to `/api/v1/items` with a name, description, and image_url
+#I receive a 201 JSON  response if the record is successfully created
+#And I receive a JSON response containing the id, name, description, and image_url but not the created_at or updated_at
     
