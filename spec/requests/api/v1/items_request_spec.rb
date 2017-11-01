@@ -44,12 +44,11 @@ RSpec.describe "Items API" do
   end
 
   it "can create an item" do
-    item = create(:item)
+    item_params = {item: {name: "Megatron", description: "Bad dude", image_url: " "}}
 
-    put "/api/v1/items/#{item.id}"
+    post "/api/v1/items", params: item_params
 
-    expect(response.status).to eq(204) 
-    expect(Item.find(item.id)).to raise_exception(ActiveRecord::RecordNotFound)
+    expect(response.status).to eq(201) 
   end
 end
 #When I send a POST request to `/api/v1/items` with a name, description, and image_url
