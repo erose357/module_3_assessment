@@ -20,13 +20,9 @@
         <a href="/orders">Orders</a>
       </li>
     </ul>
-<div class="row">
-  <div class="col-lg-6">
-    <div class="input-group">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Search</button>
-      </span>
-      <input type="text" class="form-control" placeholder="Search by zip">
-    </div><!-- /input-group -->
-  </div><!-- /.col-lg-6 -->
+		<%= form_tag("/search", method: "get") do %>
+			<%= label_tag(:q, "Search by zip") %>
+			<%= text_field_tag(:q) %>
+			<%= submit_tag("Search") %>
+		<% end %>
 </nav>
