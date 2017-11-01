@@ -1,8 +1,8 @@
 <h1>Best Buy Store Search Results</h1>
 
-<h2><%= @stores.count %> Total Stores</h2>
+<h2><%= @stores.store_total %> Total Stores</h2>
 
-<%= @stores.each do |store| %>
+<%= @stores.get_stores.each do |store| %>
   <p class="long-name">Name: <%= store.long_name %></p>
   <p class="city">City: <%= store.city %></p>
   <p class="distance">Distance: <%= store.distance %></p>
